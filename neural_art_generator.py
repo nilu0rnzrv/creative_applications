@@ -17,12 +17,12 @@ YRES = 1024
 XLIM = np.array([-1.0, 1.0])
 YLIM = XLIM * (float(YRES) / XRES)
 DEPTH = 5
-CHANNELS = 3  # Using RGB color channels
+CHANNELS = 3  
 OUTPUT_STD = 1.5
 HIDDEN_STD = 1.4
 Z_DIMS = 5
 Z_RANGE = (-1.6, 1.2)
-RADIUS = False  # Disable radius for a different effect
+RADIUS = False  
 
 if len(sys.argv) != 2:
     sys.stderr.write("Usage: {} DIRECTORY\n".format(sys.argv[0]))
@@ -88,10 +88,9 @@ while count < ITERATIONS:
             device=DEVICE
         )
 
-        # Convert the NumPy array to a PIL Image
+
         result_image = Image.fromarray((result * 255).astype(np.uint8))
 
-        # Apply additional effects using PIL
         result_image = result_image.filter(ImageFilter.GaussianBlur(radius=2))
         result_image = ImageEnhance.Color(result_image).enhance(1.5)
 
