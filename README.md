@@ -36,7 +36,7 @@ brew install ffmpeg           # For macOS
 
 Then, run the following command:
 ```bash
-ffmpeg -r 24 -i /path/to/output_directory/image_%04d_iter_%0.2f.png -vf "scale=1024:-1" -pix_fmt yuv420p output_video.mp4
+ ffmpeg -framerate 30 -pattern_type glob -i "output_images/*.png" -i Arnor.mp3 -c:v libx264 -pix_fmt yuv420p -c:a aac -strict experimental -b:a 192k -shortest output_video_with_music.mp4
 ```
 
 Adjust the input path, output video name.
